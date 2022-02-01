@@ -1,0 +1,7 @@
+{% if user.is_authenticated %}
+    <span style="color:darkgreen;">{{ user.username }}</span>
+    <a href="{% url 'logout' %}"> Выйти </a>
+{% else %}
+    <a href="{% url 'register' %}">Регистрация</a>
+    <a href="{% url 'login' %}">Вход</a>
+{% endif %}

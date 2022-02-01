@@ -1,0 +1,61 @@
+{% extends 'shortlinks/base.html' %}
+
+{% block content %}
+    <a href="/" style="width: 100%;background: darkkhaki;">Сократить ссылку</a> <br/>
+    {% for link in page_obj %}
+        <div class="link-block" id="link_{{ link.id }}">
+            <div class="link-block_short">
+                <span style="color:blue;"> {{ link.url }}  </span> |
+                <span style="color:brown;"> {{ link.short_url }}  </span> |
+                <span class="detail" data-id="{{ link.id }}" style="text-decoration: underline; color: slateblue; cursor: pointer;"> Подробнее</span>
+
+            </div>
+            <div  class="link-block_detail d-none" id="link-block_details_{{ link.id }}"  style="border: 1px solid lightblue; padding: 10px;" >
+
+            </div>
+        </div>
+
+
+        <br/>
+
+    {% endfor %}
+
+
+    {#    <div class="pagination">#}
+    {#    <span class="step-links">#}
+    {#        {% if page_obj.has_previous %}#}
+    {#            <a href="?page=1">&laquo; first</a>#}
+    {#            <a href="?page={{ page_obj.previous_page_number }}">previous</a>#}
+    {#        {% endif %}#}
+    {##}
+    {#        <span class="current">#}
+    {#            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.#}
+    {#        </span>#}
+    {##}
+    {#        {% if page_obj.has_next %}#}
+    {#            <a href="?page={{ page_obj.next_page_number }}">next</a>#}
+    {#            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>#}
+    {#        {% endif %}#}
+    {#    </span>#}
+    {#    </div>#}
+
+    <nav class="list-pagination">
+        <ul>
+            {% for p in paginator.page_range %}
+                {% if page_obj.number == p %}
+                    <li class="page-num">
+                        <span >{{ p }}</span>
+                    </li>
+                {% else %}
+                    <li class="page-num">
+                        <a href="?page={{ p }}">{{ p }}</a>
+                    </li>
+                {% endif %}
+
+            {% endfor %}
+        </ul>
+    </nav>
+
+{% endblock content %}
+
+

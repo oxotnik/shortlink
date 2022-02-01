@@ -1,0 +1,18 @@
+{% extends 'shortlinks/base.html' %}
+
+
+{% block content %}
+
+    <span>Короткая ссылка:</span>
+    <br/>
+    <a href="{{ link.short_url }}">{{ link.short_url }}</a>
+    <br/>
+    <a href="/" style="width: 100%;background: darkkhaki;">Сократить еще одну ссылку</a> <br/>
+    {% if user.is_authenticated %}
+        <a href="/linkslist" style="width: 100%;">Все ссылки</a>
+    {% endif %}
+
+
+{% endblock content %}
+
+
